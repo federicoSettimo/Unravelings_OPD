@@ -33,7 +33,7 @@ int N_ensemble = 10000;
 double tmin = 0., tmax = 2.*M_PI, dt = 0.001;
 
 // Dynamics parameters
-double g = .5, omegaS = 0., omegaE = 1., xi = 2.;
+double g = .5, omegaS = 0., omegaE = 1., xi = 1.7;
 
 
 // 0
@@ -306,8 +306,9 @@ void unravel (string str_init_state, string str_pm) {
         out_gamma << gamma_deph << endl;
 
         // Updating rho_ex
-        Matrix2cd L = gamma_deph*(sigma_z*rho_ex*sigma_z - id);
-        rho_ex += L*dt;
+        Matrix2cd L = gamma_deph*(sigma_z*rho_ex*sigma_z - .5*anticomm(sigma_z*sigma_z, rho_ex));
+        rho_ex = rho_ex + L*dt;
+        rho_ex = rho_ex / rho_ex.trace();
 
         // Now doing the jumps
 
