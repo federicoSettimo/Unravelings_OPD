@@ -27,3 +27,28 @@ JC_APO_ent: JC_single_mode/JC_APO_ent.cpp
 	./JC_single_mode/JC_APO_ent.x
 	mv *.txt JC_single_mode/.
 	#python3 JC_single_mode/plot_JC_APO.py
+
+sigma_xz: roqj.o roqj_pop.o sigma_xz/sigma_x_sigma_z.cpp
+	g++ sigma_xz/sigma_x_sigma_z.cpp roqj.o roqj_pop.o -o sigma_xz/sigma_x_sigma_z.x -std=c++20 -O3 -ffast-math -fno-math-errno
+	./sigma_xz/sigma_x_sigma_z.x 0 p
+	mv analytic.txt analytic_0_p.txt
+	./sigma_xz/sigma_x_sigma_z.x 0 m
+	mv analytic.txt analytic_0_m.txt
+	./sigma_xz/sigma_x_sigma_z.x x p
+	mv analytic.txt analytic_x_p.txt
+	./sigma_xz/sigma_x_sigma_z.x x m
+	mv analytic.txt analytic_x_m.txt
+	./sigma_xz/sigma_x_sigma_z.x y p
+	mv analytic.txt analytic_y_p.txt
+	./sigma_xz/sigma_x_sigma_z.x y m
+	mv analytic.txt analytic_y_m.txt
+	mv *.txt sigma_xz/.
+
+sigma_xz_Z: roqj.o roqj_pop.o sigma_xz/sigma_x_sigma_z_Z.cpp
+	g++ sigma_xz/sigma_x_sigma_z_Z.cpp roqj.o roqj_pop.o -o sigma_xz/sigma_x_sigma_z_Z.x -std=c++20 -O3 -ffast-math -fno-math-errno
+	./sigma_xz/sigma_x_sigma_z_Z.x p
+	mv analytic.txt analytic_z_p.txt
+	./sigma_xz/sigma_x_sigma_z_Z.x m
+	mv analytic.txt analytic_z_m.txt
+	mv *.txt sigma_xz/.
+	#python3 JC_single_mode/plot_JC_APO.py
