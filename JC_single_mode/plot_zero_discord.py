@@ -9,92 +9,122 @@ def read_file(filename):
 
 # Reading files
 # First: evol with Phi^0 = Phi^x = Phi^y
-avg_Phi_x_Q_0_p = read_file("avg_Phi_x_Q_0_+_ent.txt")
-err_Phi_x_Q_0_p = read_file("err_obs_Phi_x_Q_0_+_ent.txt")
-exact_Phi_x_Q_0_p = read_file("exact_Phi_x_Q_0_+_ent.txt")
-avg_Phi_x_Q_x_p = read_file("avg_Phi_x_Q_x_+_ent.txt")
-err_Phi_x_Q_x_p = read_file("err_obs_Phi_x_Q_x_+_ent.txt")
-exact_Phi_x_Q_x_p = read_file("exact_Phi_x_Q_x_+_ent.txt")
-avg_Phi_x_Q_y_p = read_file("avg_Phi_x_Q_y_+_ent.txt")
-err_Phi_x_Q_y_p = read_file("err_obs_Phi_x_Q_y_+_ent.txt")
-exact_Phi_x_Q_y_p = read_file("exact_Phi_x_Q_y_+_ent.txt")
-avg_Phi_x_Q_z_p = read_file("avg_Phi_x_Q_z_+_ent.txt")
-err_Phi_x_Q_z_p = read_file("err_obs_Phi_x_Q_z_+_ent.txt")
-exact_Phi_x_Q_z_p = read_file("exact_Phi_x_Q_z_+_ent.txt")
+avg_Phi_0_Q_0_p = read_file("avg_Phi_0_Q_0_+_zero_discord.txt")
+err_Phi_0_Q_0_p = read_file("err_obs_Phi_0_Q_0_+_zero_discord.txt")
+exact_Phi_0_Q_0_p = read_file("exact_Phi_0_Q_0_+_zero_discord.txt")
+avg_Phi_0_Q_x_p = read_file("avg_Phi_0_Q_x_+_zero_discord.txt")
+err_Phi_0_Q_x_p = read_file("err_obs_Phi_0_Q_x_+_zero_discord.txt")
+exact_Phi_0_Q_x_p = read_file("exact_Phi_0_Q_x_+_zero_discord.txt")
+avg_Phi_0_Q_y_p = read_file("avg_Phi_0_Q_y_+_zero_discord.txt")
+err_Phi_0_Q_y_p = read_file("err_obs_Phi_0_Q_y_+_zero_discord.txt")
+exact_Phi_0_Q_y_p = read_file("exact_Phi_0_Q_y_+_zero_discord.txt")
+avg_Phi_0_Q_z_p = read_file("avg_Phi_0_Q_z_+_zero_discord.txt")
+err_Phi_0_Q_z_p = read_file("err_obs_Phi_0_Q_z_+_zero_discord.txt")
+exact_Phi_0_Q_z_p = read_file("exact_Phi_0_Q_z_+_zero_discord.txt")
 
-avg_Phi_x_Q_0_m = read_file("avg_Phi_x_Q_0_-_ent.txt")
-err_Phi_x_Q_0_m = read_file("err_obs_Phi_x_Q_0_-_ent.txt")
-exact_Phi_x_Q_0_m = read_file("exact_Phi_x_Q_0_-_ent.txt")
-avg_Phi_x_Q_x_m = read_file("avg_Phi_x_Q_x_-_ent.txt")
-err_Phi_x_Q_x_m = read_file("err_obs_Phi_x_Q_x_-_ent.txt")
-exact_Phi_x_Q_x_m = read_file("exact_Phi_x_Q_x_-_ent.txt")
-avg_Phi_x_Q_y_m = read_file("avg_Phi_x_Q_y_-_ent.txt")
-err_Phi_x_Q_y_m = read_file("err_obs_Phi_x_Q_y_-_ent.txt")
-exact_Phi_x_Q_y_m = read_file("exact_Phi_x_Q_y_-_ent.txt")
-avg_Phi_x_Q_z_m = read_file("avg_Phi_x_Q_z_-_ent.txt")
-err_Phi_x_Q_z_m = read_file("err_obs_Phi_x_Q_z_-_ent.txt")
-exact_Phi_x_Q_z_m = read_file("exact_Phi_x_Q_z_-_ent.txt")
+avg_Phi_0_Q_0_m = read_file("avg_Phi_0_Q_0_-_zero_discord.txt")
+err_Phi_0_Q_0_m = read_file("err_obs_Phi_0_Q_0_-_zero_discord.txt")
+exact_Phi_0_Q_0_m = read_file("exact_Phi_0_Q_0_-_zero_discord.txt")
+avg_Phi_0_Q_x_m = read_file("avg_Phi_0_Q_x_-_zero_discord.txt")
+err_Phi_0_Q_x_m = read_file("err_obs_Phi_0_Q_x_-_zero_discord.txt")
+exact_Phi_0_Q_x_m = read_file("exact_Phi_0_Q_x_-_zero_discord.txt")
+avg_Phi_0_Q_y_m = read_file("avg_Phi_0_Q_y_-_zero_discord.txt")
+err_Phi_0_Q_y_m = read_file("err_obs_Phi_0_Q_y_-_zero_discord.txt")
+exact_Phi_0_Q_y_m = read_file("exact_Phi_0_Q_y_-_zero_discord.txt")
+avg_Phi_0_Q_z_m = read_file("avg_Phi_0_Q_z_-_zero_discord.txt")
+err_Phi_0_Q_z_m = read_file("err_obs_Phi_0_Q_z_-_zero_discord.txt")
+exact_Phi_0_Q_z_m = read_file("exact_Phi_0_Q_z_-_zero_discord.txt")
 
 mu_0_p = (np.sqrt(3)+1)/2
 mu_0_m = (np.sqrt(3)-1)/2
-avg_Phi_x_Q_0 = mu_0_p*avg_Phi_x_Q_0_p - mu_0_m*avg_Phi_x_Q_0_m
-err_Phi_x_Q_0 = .5*np.sqrt(err_Phi_x_Q_0_p**2 + err_Phi_x_Q_0_m**2)
-exact_Phi_x_Q_0 = mu_0_p*exact_Phi_x_Q_0_p - mu_0_m*exact_Phi_x_Q_0_m
-avg_Phi_x_Q_x = .5*(avg_Phi_x_Q_x_p - avg_Phi_x_Q_x_m)
-err_Phi_x_Q_x = .5*np.sqrt(err_Phi_x_Q_x_p**2 + err_Phi_x_Q_x_m**2)
-exact_Phi_x_Q_x = .5*(exact_Phi_x_Q_x_p - exact_Phi_x_Q_x_m)
-avg_Phi_x_Q_y = .5*(avg_Phi_x_Q_y_p - avg_Phi_x_Q_y_m)
-err_Phi_x_Q_y = .5*np.sqrt(err_Phi_x_Q_y_p**2 + err_Phi_x_Q_y_m**2)
-exact_Phi_x_Q_y = .5*(exact_Phi_x_Q_y_p - exact_Phi_x_Q_y_m)
-avg_Phi_x_Q_z = .5*(avg_Phi_x_Q_z_p - avg_Phi_x_Q_z_m)
-err_Phi_x_Q_z = .5*np.sqrt(err_Phi_x_Q_z_p**2 + err_Phi_x_Q_z_m**2)
-exact_Phi_x_Q_z = .5*(exact_Phi_x_Q_z_p - exact_Phi_x_Q_z_m)
+avg_Phi_0_tilde_Q_0 = mu_0_p*avg_Phi_0_Q_0_p - mu_0_m*avg_Phi_0_Q_0_m
+err_Phi_0_tilde_Q_0 = .5*np.sqrt(err_Phi_0_Q_0_p**2 + err_Phi_0_Q_0_m**2)
+exact_Phi_0_tilde_Q_0 = mu_0_p*exact_Phi_0_Q_0_p - mu_0_m*exact_Phi_0_Q_0_m
+avg_Phi_0_tilde_Q_x = .5*(avg_Phi_0_Q_x_p - avg_Phi_0_Q_x_m)
+err_Phi_0_tilde_Q_x = .5*np.sqrt(err_Phi_0_Q_x_p**2 + err_Phi_0_Q_x_m**2)
+exact_Phi_0_tilde_Q_x = .5*(exact_Phi_0_Q_x_p - exact_Phi_0_Q_x_m)
+avg_Phi_0_tilde_Q_y = .5*(avg_Phi_0_Q_y_p - avg_Phi_0_Q_y_m)
+err_Phi_0_tilde_Q_y = .5*np.sqrt(err_Phi_0_Q_y_p**2 + err_Phi_0_Q_y_m**2)
+exact_Phi_0_tilde_Q_y = .5*(exact_Phi_0_Q_y_p - exact_Phi_0_Q_y_m)
+avg_Phi_0_tilde_Q_z = .5*(avg_Phi_0_Q_z_p - avg_Phi_0_Q_z_m)
+err_Phi_0_tilde_Q_z = .5*np.sqrt(err_Phi_0_Q_z_p**2 + err_Phi_0_Q_z_m**2)
+exact_Phi_0_tilde_Q_z = .5*(exact_Phi_0_Q_z_p - exact_Phi_0_Q_z_m)
 
 # Then: evol with Phi^z
-avg_Phi_z_Q_0_p = read_file("avg_Phi_z_Q_0_+_ent.txt")
-err_Phi_z_Q_0_p = read_file("err_obs_Phi_z_Q_0_+_ent.txt")
-exact_Phi_z_Q_0_p = read_file("exact_Phi_z_Q_0_+_ent.txt")
-avg_Phi_z_Q_x_p = read_file("avg_Phi_z_Q_x_+_ent.txt")
-err_Phi_z_Q_x_p = read_file("err_obs_Phi_z_Q_x_+_ent.txt")
-exact_Phi_z_Q_x_p = read_file("exact_Phi_z_Q_x_+_ent.txt")
-avg_Phi_z_Q_y_p = read_file("avg_Phi_z_Q_y_+_ent.txt")
-err_Phi_z_Q_y_p = read_file("err_obs_Phi_z_Q_y_+_ent.txt")
-exact_Phi_z_Q_y_p = read_file("exact_Phi_z_Q_y_+_ent.txt")
-avg_Phi_z_Q_z_p = read_file("avg_Phi_z_Q_z_+_ent.txt")
-err_Phi_z_Q_z_p = read_file("err_obs_Phi_z_Q_z_+_ent.txt")
-exact_Phi_z_Q_z_p = read_file("exact_Phi_z_Q_z_+_ent.txt")
+avg_Phi_1_Q_0_p = read_file("avg_Phi_1_Q_0_+_zero_discord.txt")
+err_Phi_1_Q_0_p = read_file("err_obs_Phi_1_Q_0_+_zero_discord.txt")
+exact_Phi_1_Q_0_p = read_file("exact_Phi_1_Q_0_+_zero_discord.txt")
+avg_Phi_1_Q_x_p = read_file("avg_Phi_1_Q_x_+_zero_discord.txt")
+err_Phi_1_Q_x_p = read_file("err_obs_Phi_1_Q_x_+_zero_discord.txt")
+exact_Phi_1_Q_x_p = read_file("exact_Phi_1_Q_x_+_zero_discord.txt")
+avg_Phi_1_Q_y_p = read_file("avg_Phi_1_Q_y_+_zero_discord.txt")
+err_Phi_1_Q_y_p = read_file("err_obs_Phi_1_Q_y_+_zero_discord.txt")
+exact_Phi_1_Q_y_p = read_file("exact_Phi_1_Q_y_+_zero_discord.txt")
+avg_Phi_1_Q_z_p = read_file("avg_Phi_1_Q_z_+_zero_discord.txt")
+err_Phi_1_Q_z_p = read_file("err_obs_Phi_1_Q_z_+_zero_discord.txt")
+exact_Phi_1_Q_z_p = read_file("exact_Phi_1_Q_z_+_zero_discord.txt")
 
-avg_Phi_z_Q_0_m = read_file("avg_Phi_z_Q_0_-_ent.txt")
-err_Phi_z_Q_0_m = read_file("err_obs_Phi_z_Q_0_-_ent.txt")
-exact_Phi_z_Q_0_m = read_file("exact_Phi_z_Q_0_-_ent.txt")
-avg_Phi_z_Q_x_m = read_file("avg_Phi_z_Q_x_-_ent.txt")
-err_Phi_z_Q_x_m = read_file("err_obs_Phi_z_Q_x_-_ent.txt")
-exact_Phi_z_Q_x_m = read_file("exact_Phi_z_Q_x_-_ent.txt")
-avg_Phi_z_Q_y_m = read_file("avg_Phi_z_Q_y_-_ent.txt")
-err_Phi_z_Q_y_m = read_file("err_obs_Phi_z_Q_y_-_ent.txt")
-exact_Phi_z_Q_y_m = read_file("exact_Phi_z_Q_y_-_ent.txt")
-avg_Phi_z_Q_z_m = read_file("avg_Phi_z_Q_z_-_ent.txt")
-err_Phi_z_Q_z_m = read_file("err_obs_Phi_z_Q_z_-_ent.txt")
-exact_Phi_z_Q_z_m = read_file("exact_Phi_z_Q_z_-_ent.txt")
+avg_Phi_1_Q_0_m = read_file("avg_Phi_1_Q_0_-_zero_discord.txt")
+err_Phi_1_Q_0_m = read_file("err_obs_Phi_1_Q_0_-_zero_discord.txt")
+exact_Phi_1_Q_0_m = read_file("exact_Phi_1_Q_0_-_zero_discord.txt")
+avg_Phi_1_Q_x_m = read_file("avg_Phi_1_Q_x_-_zero_discord.txt")
+err_Phi_1_Q_x_m = read_file("err_obs_Phi_1_Q_x_-_zero_discord.txt")
+exact_Phi_1_Q_x_m = read_file("exact_Phi_1_Q_x_-_zero_discord.txt")
+avg_Phi_1_Q_y_m = read_file("avg_Phi_1_Q_y_-_zero_discord.txt")
+err_Phi_1_Q_y_m = read_file("err_obs_Phi_1_Q_y_-_zero_discord.txt")
+exact_Phi_1_Q_y_m = read_file("exact_Phi_1_Q_y_-_zero_discord.txt")
+avg_Phi_1_Q_z_m = read_file("avg_Phi_1_Q_z_-_zero_discord.txt")
+err_Phi_1_Q_z_m = read_file("err_obs_Phi_1_Q_z_-_zero_discord.txt")
+exact_Phi_1_Q_z_m = read_file("exact_Phi_1_Q_z_-_zero_discord.txt")
 
-avg_Phi_z_Q_0 = mu_0_p*avg_Phi_z_Q_0_p - mu_0_m*avg_Phi_z_Q_0_m
-err_Phi_z_Q_0 = .5*np.sqrt(err_Phi_z_Q_0_p**2 + err_Phi_z_Q_0_m**2)
-exact_Phi_z_Q_0 = mu_0_p*exact_Phi_z_Q_0_p - mu_0_m*exact_Phi_z_Q_0_m
-avg_Phi_z_Q_x = .5*(avg_Phi_z_Q_x_p - avg_Phi_z_Q_x_m)
-err_Phi_z_Q_x = .5*np.sqrt(err_Phi_z_Q_x_p**2 + err_Phi_z_Q_x_m**2)
-exact_Phi_z_Q_x = .5*(exact_Phi_z_Q_x_p - exact_Phi_z_Q_x_m)
-avg_Phi_z_Q_y = .5*(avg_Phi_z_Q_y_p - avg_Phi_z_Q_y_m)
-err_Phi_z_Q_y = .5*np.sqrt(err_Phi_z_Q_y_p**2 + err_Phi_z_Q_y_m**2)
-exact_Phi_z_Q_y = .5*(exact_Phi_z_Q_y_p - exact_Phi_z_Q_y_m)
-avg_Phi_z_Q_z = .5*(avg_Phi_z_Q_z_p - avg_Phi_z_Q_z_m)
-err_Phi_z_Q_z = .5*np.sqrt(err_Phi_z_Q_z_p**2 + err_Phi_z_Q_z_m**2)
-exact_Phi_z_Q_z = .5*(exact_Phi_z_Q_z_p - exact_Phi_z_Q_z_m)
+avg_Phi_1_Q_0 = mu_0_p*avg_Phi_1_Q_0_p - mu_0_m*avg_Phi_1_Q_0_m
+err_Phi_1_Q_0 = .5*np.sqrt(err_Phi_1_Q_0_p**2 + err_Phi_1_Q_0_m**2)
+exact_Phi_1_Q_0 = mu_0_p*exact_Phi_1_Q_0_p - mu_0_m*exact_Phi_1_Q_0_m
+avg_Phi_1_Q_x = .5*(avg_Phi_1_Q_x_p - avg_Phi_1_Q_x_m)
+err_Phi_1_Q_x = .5*np.sqrt(err_Phi_1_Q_x_p**2 + err_Phi_1_Q_x_m**2)
+exact_Phi_1_Q_x = .5*(exact_Phi_1_Q_x_p - exact_Phi_1_Q_x_m)
+avg_Phi_1_Q_y = .5*(avg_Phi_1_Q_y_p - avg_Phi_1_Q_y_m)
+err_Phi_1_Q_y = .5*np.sqrt(err_Phi_1_Q_y_p**2 + err_Phi_1_Q_y_m**2)
+exact_Phi_1_Q_y = .5*(exact_Phi_1_Q_y_p - exact_Phi_1_Q_y_m)
+avg_Phi_1_Q_z = .5*(avg_Phi_1_Q_z_p - avg_Phi_1_Q_z_m)
+err_Phi_1_Q_z = .5*np.sqrt(err_Phi_1_Q_z_p**2 + err_Phi_1_Q_z_m**2)
+exact_Phi_1_Q_z = .5*(exact_Phi_1_Q_z_p - exact_Phi_1_Q_z_m)
 
-markevery = int(len(avg_Phi_x_Q_z_p)/50)
+
+
+# Now from \tilde\Phi^i_t, obtain the \Phi^\alpha
+p = .9
+avg_Phi_x_Q_0 = p*avg_Phi_0_tilde_Q_0 + (1-p)*avg_Phi_1_Q_0
+err_Phi_x_Q_0 = p*err_Phi_0_tilde_Q_0 + (1-p)*err_Phi_1_Q_0
+exact_Phi_x_Q_0 = p*exact_Phi_0_tilde_Q_0 + (1-p)*exact_Phi_1_Q_0
+avg_Phi_x_Q_x = p*avg_Phi_0_tilde_Q_x + (1-p)*avg_Phi_1_Q_x
+err_Phi_x_Q_x = p*err_Phi_0_tilde_Q_x + (1-p)*err_Phi_1_Q_x
+exact_Phi_x_Q_x = p*exact_Phi_0_tilde_Q_x + (1-p)*exact_Phi_1_Q_x
+avg_Phi_x_Q_y = p*avg_Phi_0_tilde_Q_y + (1-p)*avg_Phi_1_Q_y
+err_Phi_x_Q_y = p*err_Phi_0_tilde_Q_y + (1-p)*err_Phi_1_Q_y
+exact_Phi_x_Q_y = p*exact_Phi_0_tilde_Q_y + (1-p)*exact_Phi_1_Q_y
+avg_Phi_x_Q_z = p*avg_Phi_0_tilde_Q_z + (1-p)*avg_Phi_1_Q_z
+err_Phi_x_Q_z = p*err_Phi_0_tilde_Q_z + (1-p)*err_Phi_1_Q_z
+exact_Phi_x_Q_z = p*exact_Phi_0_tilde_Q_z + (1-p)*exact_Phi_1_Q_z
+
+avg_Phi_z_Q_0 = avg_Phi_1_Q_0
+err_Phi_z_Q_0 = err_Phi_1_Q_0
+exact_Phi_z_Q_0 = exact_Phi_1_Q_0
+avg_Phi_z_Q_x = avg_Phi_1_Q_x
+err_Phi_z_Q_x = err_Phi_1_Q_x
+exact_Phi_z_Q_x = exact_Phi_1_Q_x
+avg_Phi_z_Q_y = avg_Phi_1_Q_y
+err_Phi_z_Q_y = err_Phi_1_Q_y
+exact_Phi_z_Q_y = exact_Phi_1_Q_y
+avg_Phi_z_Q_z = avg_Phi_1_Q_z
+err_Phi_z_Q_z = err_Phi_1_Q_z
+exact_Phi_z_Q_z = exact_Phi_1_Q_z
+
+markevery = int(len(avg_Phi_0_Q_z_p)/50)
 markersize=4
 params = open("params.txt")
 tmax = float(params.readline())
-t = np.linspace(0, tmax, avg_Phi_x_Q_z_p.shape[0])
+t = np.linspace(0, tmax, avg_Phi_0_Q_z_p.shape[0])
 
 
 fig, ax = plt.subplots(1, 2, figsize=(15, 7), sharex=True, sharey = True)
@@ -191,7 +221,6 @@ exact_R3 = w_z*(rz0*exact_Phi_z_Q_0 + rzx*exact_Phi_z_Q_x + rzy*exact_Phi_z_Q_y 
 avg_R3 = w_z*(rz0*avg_Phi_z_Q_0 + rzx*avg_Phi_z_Q_x + rzy*avg_Phi_z_Q_y + rzz*avg_Phi_z_Q_z)/(.5)
 ax[1].plot(t, exact_R3, color=colors[2], label=r'$\mathcal{R}=\langle1\vert\cdot\vert1\rangle\,\vert1\rangle\langle1\vert$', marker=markers[2], markersize=markersize, markevery=len(t))
 ax[1].errorbar(t, avg_R3, err_rho_S, color=colors[2], marker=markers[2], markevery=markevery, errorevery=markevery, markersize=markersize, linewidth=0, elinewidth=1)
-
 
 
 fontSize = 25
