@@ -102,8 +102,19 @@ double observable (const Matrix2cd &rho) {return real((rho*sigma_x).trace());}
 Matrix2cd proj (const Vector2cd &psi) {return psi*psi.adjoint();}
 
 // Function to compute the stochastic increment dW (Wiener process)
-complex<double> dW(std::mt19937 &gen, std::normal_distribution<double> &dist) {
-    return dist(gen) + I * dist(gen);
+complex<double> dW(std::mt19937 &gen) {
+  // Adjust standard deviation for real and imaginary parts
+  double adjustedSigma = sqrt(dt) / std::sqrt(2.0);
+
+  // Define a normal distribution with mean 0 and adjusted standard deviation
+  std::normal_distribution<double> distribution(0.0, adjustedSigma);
+
+  // Generate real and imaginary parts
+  double realPart = distribution(gen);
+  double imagPart = distribution(gen);
+
+  // Combine them into a complex number
+  return std::complex<double>(realPart, imagPart);
 }
 
 int main () {
@@ -131,8 +142,8 @@ int main () {
     double mu_p = .5, mu_m = -.5;*/
 
     Vector2cd psi0;
-    string index = "_p.txt";
-    //string index = "_m.txt";
+    //string index = "_p.txt";
+    string index = "_m.txt";
     if (index == "_p.txt")
         psi0 = phi_p;
     else
@@ -148,7 +159,6 @@ int main () {
     // Initialize random number generator for Wiener process
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::normal_distribution<double> dist(0.0, sqrt(dt));
 
     vector<Vector2cd> psi_i;
     for (int i = 0; i < N_ensemble; ++i)
@@ -160,11 +170,11 @@ int main () {
         // Jump operatrs
         Matrix2cd L_p = sqrt(gamma_p(t))*sigma_p, L_m = sqrt(gamma_m(t))*sigma_m;
         for (int i = 0; i < N_ensemble; ++i) {
-            rho += proj(psi_i[i])/((double)N_ensemble);
+            rho += proj(psi_i[i].normalized())/((double)N_ensemble);
             if (i < Ntraj)
                 out_traj << observable(proj(psi_i[i])) << " ";
 
-            Vector2cd dpsi_det = -I*H(t)*psi_i[i]*dt +
+            /*Vector2cd dpsi_det = -I*H(t)*psi_i[i]*dt +
                         (L_p*psi_i[i]).conjugate().dot(L_p*psi_i[i])*psi_i[i]*dt +
                         (L_m*psi_i[i]).conjugate().dot(L_m*psi_i[i])*psi_i[i]*dt -
                         L_p.adjoint()*L_p*psi_i[i]*dt -
@@ -172,7 +182,21 @@ int main () {
                 dpsi_stoch = L_p*psi_i[i]*dW(gen, dist) +
                         L_m*psi_i[i]*dW(gen, dist);
             psi_i[i] += dpsi_det + dpsi_stoch;
+            psi_i[i].normalize();*/
+
+            complex<double> avg_L_p = psi_i[i].dot(L_p*psi_i[i]),
+                            avg_L_m = psi_i[i].dot(L_m*psi_i[i]),
+                            avg_L_p_adj = psi_i[i].dot(L_p.adjoint()*psi_i[i]),
+                            avg_L_m_adj = psi_i[i].dot(L_m.adjoint()*psi_i[i]);
+            Vector2cd dpsi = -I*H(t)*psi_i[i]*dt +
+                            (avg_L_p_adj*L_p + L_p.adjoint()*L_p + avg_L_p*avg_L_p_adj*id)*psi_i[i]*dt +
+                            (avg_L_m_adj*L_m + L_m.adjoint()*L_m + avg_L_m*avg_L_m_adj*id)*psi_i[i]*dt +
+                            (L_p - avg_L_p*id)*psi_i[i]*dW(gen) +
+                            (L_m - avg_L_m*id)*psi_i[i]*dW(gen);
+            psi_i[i] += dpsi;
             psi_i[i].normalize();
+
+                        
         }
         out_avg << observable(rho) << endl;
         out_traj << endl;
