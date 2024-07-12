@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-import seaborn as sns
 import numpy as np
 
 # Function to read data from a file
@@ -68,8 +67,6 @@ Ntraj = int(params[6])
 fig, ax = plt.subplots(1, 2, figsize=(15, 7), sharex=True, sharey = True)
 fig.tight_layout()
 
-#colors = sns.color_palette("husl", 5)
-#colors[4] = "black"
 colors = ["blue", "purple", "green","red", "black"]
 markers = ['o', 'x', '^', 's', 'd']
 markevery = int(len(t)/50)
