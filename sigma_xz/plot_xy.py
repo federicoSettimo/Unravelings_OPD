@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import seaborn as sns
 import numpy as np
 
 # Function to read data from a file
@@ -67,11 +68,12 @@ Ntraj = int(params[6])
 fig, ax = plt.subplots(1, 2, figsize=(15, 7), sharex=True, sharey = True)
 fig.tight_layout()
 
-colors = ["blue", "red", "green", "yellow", "black"]
+colors = sns.color_palette("husl", 5)
+colors[4] = "black"
 markers = ['o', 'x', '^', 's', 'd']
+markevery = int(len(t)/50)
+markersize=5.5
 
-markevery = int(len(exact_0_p)/50)
-markersize=4
 
 # Plotting Q^+
 ax[0].plot(t, exact_0_p, color=colors[0], label=r'$0$', marker=markers[0], markersize=markersize, markevery=len(t))
