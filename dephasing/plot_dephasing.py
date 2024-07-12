@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-import seaborn as sns
 import numpy as np
 
 # Function to read data from a file
@@ -74,31 +73,30 @@ t = np.linspace(0, params[3], len(exact_0_p))
 fig, ax = plt.subplots(1, 2, figsize=(15, 7), sharex=True, sharey = True)
 fig.tight_layout()
 
-#colors = sns.color_palette("hls", 5)
-colors = ['#66c2a5','#fc8d62','#8da0cb','#e78ac3','#a6d854']
+colors = ["blue", "purple", "green","red", "black"]
 markers = ['o', 'x', '^', 's', 'd']
+markevery = int(len(t)/20)
+markersize=5.5
 
-markevery = int(len(exact_0_p)/50)
-markersize=4
 fontSize = 25
 
 # Plotting Q for xi 1
 ax[0].plot(t, exact_0, color=colors[0], label=r'$0$', marker=markers[0], markersize=markersize, markevery=len(t))
 ax[0].errorbar(t, avg_0, err_0, color=colors[0], marker=markers[0], markevery=markevery, errorevery=markevery, markersize=markersize, linewidth=0, elinewidth=1)
-ax[0].plot(t, exact_x, color=colors[1], label=r'$x$', marker=markers[1], markersize=markersize, markevery=len(t))
+ax[0].plot(t, exact_x, '--', color=colors[1], label=r'$x$', marker=markers[1], markersize=markersize, markevery=len(t))
 ax[0].errorbar(t, avg_x, err_x, color=colors[1], marker=markers[1], markevery=markevery, errorevery=markevery, markersize=markersize, linewidth=0, elinewidth=1)
-ax[0].plot(t, exact_y, color=colors[2], label=r'$y$', marker=markers[2], markersize=markersize, markevery=len(t))
+ax[0].plot(t, exact_y, ':', color=colors[2], label=r'$y$', marker=markers[2], markersize=markersize, markevery=len(t))
 ax[0].errorbar(t, avg_y, err_y, color=colors[2], marker=markers[2], markevery=markevery, errorevery=markevery, markersize=markersize, linewidth=0, elinewidth=1)
-ax[0].plot(t, exact_z, color=colors[3], label=r'$z$', marker=markers[3], markersize=markersize, markevery=len(t))
+ax[0].plot(t, exact_z, '-.', color=colors[3], label=r'$z$', marker=markers[3], markersize=markersize, markevery=len(t))
 ax[0].errorbar(t, avg_z, err_z, color=colors[3], marker=markers[3], markevery=markevery, errorevery=markevery, markersize=markersize, linewidth=0, elinewidth=1)
-ax[0].plot(t, rho_t, color=colors[4], label=r'$\rho_S$', marker=markers[4], markersize=markersize, markevery=len(t))
-ax[0].errorbar(t, avg_rho_t, err_rho_t, color=colors[4], marker=markers[4], markevery=markevery, errorevery=markevery, markersize=markersize, linewidth=0, elinewidth=1)
+ax[0].plot(t, rho_t, color=colors[4], label=r'$\rho_S$', marker=markers[4], markersize=1.2*markersize, markevery=len(t), linewidth=3)
+ax[0].errorbar(t, avg_rho_t, err_rho_t, color=colors[4], marker=markers[4], markevery=markevery, errorevery=markevery, markersize=1.2*markersize, linewidth=0, elinewidth=1)
 
 axx = ax[0].inset_axes([.1,.6,.35,.33])
 axx.plot(t, gamma_0, color=colors[0])
-axx.plot(t, gamma_x, color=colors[1])
-axx.plot(t, gamma_y, color=colors[2])
-axx.plot(t, gamma_z, color=colors[3])
+axx.plot(t, gamma_x, '--', color=colors[1])
+axx.plot(t, gamma_y, ':', color=colors[2])
+axx.plot(t, gamma_z, '-.', color=colors[3])
 axx.axhline(0, color="black", linewidth=.5)
 axx.set_title(r'$\gamma_\alpha$', fontsize=fontSize-1)
 axx.tick_params(axis='both', which='major', labelsize=fontSize-2)
@@ -166,20 +164,20 @@ err_rho_t = .5*np.sqrt(err_0**2 + err_x**2 + err_y**2)
 
 ax[1].plot(t, exact_0, color=colors[0], label=r'$0$', marker=markers[0], markersize=markersize, markevery=len(t))
 ax[1].errorbar(t, avg_0, err_0, color=colors[0], marker=markers[0], markevery=markevery, errorevery=markevery, markersize=markersize, linewidth=0, elinewidth=1)
-ax[1].plot(t, exact_x, color=colors[1], label=r'$x$', marker=markers[1], markersize=markersize, markevery=len(t))
+ax[1].plot(t, exact_x, '--', color=colors[1], label=r'$x$', marker=markers[1], markersize=markersize, markevery=len(t))
 ax[1].errorbar(t, avg_x, err_x, color=colors[1], marker=markers[1], markevery=markevery, errorevery=markevery, markersize=markersize, linewidth=0, elinewidth=1)
-ax[1].plot(t, exact_y, color=colors[2], label=r'$y$', marker=markers[2], markersize=markersize, markevery=len(t))
+ax[1].plot(t, exact_y, ':', color=colors[2], label=r'$y$', marker=markers[2], markersize=markersize, markevery=len(t))
 ax[1].errorbar(t, avg_y, err_y, color=colors[2], marker=markers[2], markevery=markevery, errorevery=markevery, markersize=markersize, linewidth=0, elinewidth=1)
-ax[1].plot(t, exact_z, color=colors[3], label=r'$z$', marker=markers[3], markersize=markersize, markevery=len(t))
+ax[1].plot(t, exact_z, '-.', color=colors[3], label=r'$z$', marker=markers[3], markersize=markersize, markevery=len(t))
 ax[1].errorbar(t, avg_z, err_z, color=colors[3], marker=markers[3], markevery=markevery, errorevery=markevery, markersize=markersize, linewidth=0, elinewidth=1)
-ax[1].plot(t, rho_t, color=colors[4], label=r'$\rho_S$', marker=markers[4], markersize=markersize, markevery=len(t))
-ax[1].errorbar(t, avg_rho_t, err_rho_t, color=colors[4], marker=markers[4], markevery=markevery, errorevery=markevery, markersize=markersize, linewidth=0, elinewidth=1)
+ax[1].plot(t, rho_t, color=colors[4], label=r'$\rho_S$', marker=markers[4], markersize=1.2*markersize, markevery=len(t), linewidth=3)
+ax[1].errorbar(t, avg_rho_t, err_rho_t, color=colors[4], marker=markers[4], markevery=markevery, errorevery=markevery, markersize=1.2*markersize, linewidth=0, elinewidth=1)
 
 axx = ax[1].inset_axes([.1,.62,.35,.3])
 axx.plot(t, gamma_0, color=colors[0])
-axx.plot(t, gamma_x, color=colors[1])
-axx.plot(t, gamma_y, color=colors[2])
-axx.plot(t, gamma_z, color=colors[3])
+axx.plot(t, gamma_x, '--', color=colors[1])
+axx.plot(t, gamma_y, ':', color=colors[2])
+axx.plot(t, gamma_z, '-.', color=colors[3])
 axx.axhline(0, color="black", linewidth=.5)
 axx.set_title(r'$\gamma_\alpha$', fontsize=fontSize-1)
 axx.tick_params(axis='both', which='major', labelsize=fontSize-2)
