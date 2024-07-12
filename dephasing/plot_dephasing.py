@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import seaborn as sns
 import numpy as np
 
 # Function to read data from a file
@@ -73,7 +74,8 @@ t = np.linspace(0, params[3], len(exact_0_p))
 fig, ax = plt.subplots(1, 2, figsize=(15, 7), sharex=True, sharey = True)
 fig.tight_layout()
 
-colors = ["blue", "red", "green", "yellow", "black"]
+#colors = sns.color_palette("hls", 5)
+colors = ['#66c2a5','#fc8d62','#8da0cb','#e78ac3','#a6d854']
 markers = ['o', 'x', '^', 's', 'd']
 
 markevery = int(len(exact_0_p)/50)
@@ -173,7 +175,7 @@ ax[1].errorbar(t, avg_z, err_z, color=colors[3], marker=markers[3], markevery=ma
 ax[1].plot(t, rho_t, color=colors[4], label=r'$\rho_S$', marker=markers[4], markersize=markersize, markevery=len(t))
 ax[1].errorbar(t, avg_rho_t, err_rho_t, color=colors[4], marker=markers[4], markevery=markevery, errorevery=markevery, markersize=markersize, linewidth=0, elinewidth=1)
 
-axx = ax[1].inset_axes([.1,.6,.35,.33])
+axx = ax[1].inset_axes([.1,.62,.35,.3])
 axx.plot(t, gamma_0, color=colors[0])
 axx.plot(t, gamma_x, color=colors[1])
 axx.plot(t, gamma_y, color=colors[2])
@@ -186,8 +188,8 @@ axx.tick_params(axis='both', which='major', labelsize=fontSize-2)
 ax[0].legend(loc='lower right', fontsize=fontSize-1)
 ax[1].legend(loc='lower right', fontsize=fontSize-1)
 
-ax[0].set_title(r'$Q_\alpha(t)$ and $\rho_S(t)$, $\xi = 1.7$', fontsize=fontSize)
-ax[1].set_title(r'$Q_\alpha(t)$ and $\rho_S(t)$, $\xi = 3.5$', fontsize=fontSize)
+ax[0].set_title(r'$Q_\alpha(t)$ and $\rho_S(t)$, $\beta = 1.7$', fontsize=fontSize)
+ax[1].set_title(r'$Q_\alpha(t)$ and $\rho_S(t)$, $\beta = 3.5$', fontsize=fontSize)
 
 ax[0].set_ylabel(r'tr$[X \sigma_x]$', fontsize=fontSize)
 for i in range(2):
