@@ -80,25 +80,25 @@ ax[0].plot(t, exact_0_p, color=colors[0], label=r'$0$', marker=markers[0], marke
 ax[0].errorbar(t, avg_0_p, err_0_p, color=colors[0], marker=markers[0], markevery=markevery, errorevery=markevery, markersize=markersize, linewidth=0, elinewidth=1)
 for i in range(Ntraj):
     ax[0].plot(t, traj_0_p[:,i], color=colors[0], alpha=.1)
-ax[0].plot(t, exact_x_p, color=colors[1], label=r'$x$', marker=markers[1], markersize=markersize, markevery=len(t))
+ax[0].plot(t, exact_x_p, '--', color=colors[1], label=r'$x$', marker=markers[1], markersize=markersize, markevery=len(t))
 ax[0].errorbar(t, avg_x_p, err_x_p, color=colors[1], marker=markers[1], markevery=markevery, errorevery=markevery, markersize=markersize, linewidth=0, elinewidth=1)
 for i in range(Ntraj):
-    ax[0].plot(t, traj_x_p[:,i], color=colors[1], alpha=.1)
-ax[0].plot(t, exact_y_p, color=colors[2], label=r'$y$', marker=markers[2], markersize=markersize, markevery=len(t))
+    ax[0].plot(t, traj_x_p[:,i], '--', color=colors[1], alpha=.1)
+ax[0].plot(t, exact_y_p, ':', color=colors[2], label=r'$y$', marker=markers[2], markersize=markersize, markevery=len(t))
 ax[0].errorbar(t, avg_y_p, err_y_p, color=colors[2], marker=markers[2], markevery=markevery, errorevery=markevery, markersize=markersize, linewidth=0, elinewidth=1)
 for i in range(Ntraj):
-    ax[0].plot(t, traj_y_p[:,i], color=colors[2], alpha=.1)
-ax[0].plot(t, exact_z_p, color=colors[3], label=r'$z$', marker=markers[3], markersize=markersize, markevery=markevery)
+    ax[0].plot(t, traj_y_p[:,i], ':', color=colors[2], alpha=.1)
+ax[0].plot(t, exact_z_p, '-.', color=colors[3], label=r'$z$', marker=markers[3], markersize=markersize, markevery=markevery)
 
 # Plotting Q
 ax[1].plot(t, exact_0, color=colors[0], label=r'$0$', marker=markers[0], markersize=markersize, markevery=len(t))
 ax[1].errorbar(t, avg_0, err_0, color=colors[0], marker=markers[0], markevery=markevery, errorevery=markevery, markersize=markersize, linewidth=0, elinewidth=1)
-ax[1].plot(t, exact_x, color=colors[1], label=r'$x$', marker=markers[1], markersize=markersize, markevery=len(t))
+ax[1].plot(t, exact_x, '--', color=colors[1], label=r'$x$', marker=markers[1], markersize=markersize, markevery=len(t))
 ax[1].errorbar(t, avg_x, err_x, color=colors[1], marker=markers[1], markevery=markevery, errorevery=markevery, markersize=markersize, linewidth=0, elinewidth=1)
-ax[1].plot(t, exact_y, color=colors[2], label=r'$y$', marker=markers[2], markersize=markersize, markevery=len(t))
+ax[1].plot(t, exact_y, ':', color=colors[2], label=r'$y$', marker=markers[2], markersize=markersize, markevery=len(t))
 ax[1].errorbar(t, avg_y, err_y, color=colors[2], marker=markers[2], markevery=markevery, errorevery=markevery, markersize=markersize, linewidth=0, elinewidth=1)
-ax[1].plot(t, exact_z, color=colors[3], label=r'$z$', marker=markers[3], markersize=markersize, markevery=markevery)
-ax[1].plot(t, rho_t, color=colors[4], label=r'$\rho_S(t)$', marker=markers[4], markersize=markersize, markevery=len(t))
+ax[1].plot(t, exact_z, '-.', color=colors[3], label=r'$z$', marker=markers[3], markersize=markersize, markevery=markevery)
+ax[1].plot(t, rho_t, color=colors[4], label=r'$\rho_S(t)$', marker=markers[4], markersize=markersize, markevery=len(t), linewidth=3)
 ax[1].errorbar(t, avg_rho_t, err_rho_t, color=colors[4], marker=markers[4], markevery=markevery, errorevery=markevery, markersize=markersize, linewidth=0, elinewidth=1)
 
 
