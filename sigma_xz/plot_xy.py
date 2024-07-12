@@ -68,13 +68,14 @@ Ntraj = int(params[6])
 fig, ax = plt.subplots(1, 2, figsize=(15, 7), sharex=True, sharey = True)
 fig.tight_layout()
 
-colors = sns.color_palette("husl", 5)
-colors[4] = "black"
+#colors = sns.color_palette("husl", 5)
+#colors[4] = "black"
+colors = ["blue", "purple", "green","red", "black"]
 markers = ['o', 'x', '^', 's', 'd']
 markevery = int(len(t)/50)
 markersize=5.5
 
-
+Ntraj = Ntraj-2
 # Plotting Q^+
 ax[0].plot(t, exact_0_p, color=colors[0], label=r'$0$', marker=markers[0], markersize=markersize, markevery=len(t))
 ax[0].errorbar(t, avg_0_p, err_0_p, color=colors[0], marker=markers[0], markevery=markevery, errorevery=markevery, markersize=markersize, linewidth=0, elinewidth=1)
@@ -98,8 +99,8 @@ ax[1].errorbar(t, avg_x, err_x, color=colors[1], marker=markers[1], markevery=ma
 ax[1].plot(t, exact_y, ':', color=colors[2], label=r'$y$', marker=markers[2], markersize=markersize, markevery=len(t))
 ax[1].errorbar(t, avg_y, err_y, color=colors[2], marker=markers[2], markevery=markevery, errorevery=markevery, markersize=markersize, linewidth=0, elinewidth=1)
 ax[1].plot(t, exact_z, '-.', color=colors[3], label=r'$z$', marker=markers[3], markersize=markersize, markevery=markevery)
-ax[1].plot(t, rho_t, color=colors[4], label=r'$\rho_S(t)$', marker=markers[4], markersize=markersize, markevery=len(t), linewidth=3)
-ax[1].errorbar(t, avg_rho_t, err_rho_t, color=colors[4], marker=markers[4], markevery=markevery, errorevery=markevery, markersize=markersize, linewidth=0, elinewidth=1)
+ax[1].plot(t, rho_t, color=colors[4], label=r'$\rho_S(t)$', marker=markers[4], markersize=1.2*markersize, markevery=len(t), linewidth=3)
+ax[1].errorbar(t, avg_rho_t, err_rho_t, color=colors[4], marker=markers[4], markevery=markevery, errorevery=markevery, markersize=1.2*markersize, linewidth=0, elinewidth=1)
 
 
 axx = ax[1].inset_axes([.1,.6,.35,.33])
