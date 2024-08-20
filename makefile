@@ -52,3 +52,9 @@ sigma_xz_Z: roqj.o roqj_pop.o sigma_xz/sigma_x_sigma_z_Z.cpp
 	mv analytic.txt analytic_z_m.txt
 	mv *.txt sigma_xz/.
 	#python3 JC_single_mode/plot_JC_APO.py
+
+dephasing4d: dephasing4d/dephasing.cpp
+	g++ dephasing4d/dephasing.cpp -o dephasing4d/dephasing.x -std=c++20 -O3 -ffast-math -fno-math-errno
+	./dephasing4d/dephasing.x
+	mv *.txt dephasing4d/.
+	#python3 plot_dephasing.py
