@@ -137,6 +137,7 @@ Matrix4cd Lindbladian (const Matrix4cd &rho, double t) {
 }
 
 double observable (const Matrix4cd &rho) {return real(rho(1,0));}
+//double observable (const Matrix4cd &rho) {return imag(rho(1,0));}
 
 void get_exact_solution (const Matrix4cd &rho0, string file_index) {
     string out_file = "exact_"+file_index+".txt";
@@ -247,15 +248,18 @@ void QSD (const Vector4cd &psi0, string file_index) {
 
 
 int main () {
-    get_exact_solution(proj(ketPlus), "p");
-    get_exact_solution(proj(ketMinus), "m");
-    get_exact_solution(Q1, "0");
+    // A string defining whether obs is real or imag part
+    string re_or_im = "re";
+    //string re_or_im = "im";
+    get_exact_solution(proj(ketPlus), "p_"+re_or_im);
+    get_exact_solution(proj(ketMinus), "m_"+re_or_im);
+    get_exact_solution(Q1, "0_"+re_or_im);
 
-    MCWF(ketPlus, "p");
-    MCWF(ketMinus, "m");
+    MCWF(ketPlus, "p_"+re_or_im);
+    MCWF(ketMinus, "m_"+re_or_im);
 
-    QSD(ketPlus, "p");
-    QSD(ketMinus, "m");
+    QSD(ketPlus, "p_"+re_or_im);
+    QSD(ketMinus, "m_"+re_or_im);
 
     ofstream out("tmax.txt");
     out << tmax;
