@@ -57,10 +57,10 @@ QSD_traj_m_im = read_file_columns("QSD_traj_m_im.txt")
 Npoints = len(exact_0)
 t = np.linspace(0,tmax,Npoints)
 markevery = int(Npoints/20)
-Ntraj = len(MCWF_traj_p) - 4
+Ntraj = len(MCWF_traj_p) - 2
 
 fig, ax = plt.subplots(1,3, figsize=(16,4), sharex=True, sharey=True)
-axx = ax[2].inset_axes([.1,.1,.4,.4])
+axx = ax[2].inset_axes([.09,.02,.35,.35])
 fig.tight_layout()
 
 ax[0].plot(t,exact_p, color='black')
@@ -94,10 +94,12 @@ for i in range(Ntraj):
 ax[2].plot(t, .5*exact_0, color='black')
 ax[2].plot(t, .5*(MCWF_p - MCWF_m), marker='o', markersize=6, color='red', label="MCWF", markevery=markevery, linewidth=0, fillstyle='none')
 ax[2].plot(t, .5*(QSD_p - QSD_m), marker='x', markersize=6, color='blue', label="QSD", markevery=markevery, linewidth=0, fillstyle='none')
+ax[2].plot(t, 0*t, color = 'green', label=r"$\rho_S(t)$")
 if print_also_imag:
     ax[2].plot(t, .5*exact_0_im, '--', color='black')
     ax[2].plot(t, .5*(MCWF_p_im - MCWF_m_im), marker='o', markersize=6, color='red', markevery=markevery, linewidth=0, fillstyle='none')
     ax[2].plot(t, .5*(QSD_p_im - QSD_m_im), marker='x', markersize=6, color='blue', markevery=markevery, linewidth=0, fillstyle='none')
+    ax[2].plot(t, np.sin(t)/8, '--', color = 'green')
 
 for i in range(3):
     axx.plot(t, rates[i])
@@ -122,5 +124,6 @@ else:
 for i in range(3):
     ax[i].tick_params(axis='both', which='major', labelsize=fontSize-1)
 axx.tick_params(axis='both', which='major', labelsize=fontSize-2)
+axx.set_xticks([])
 
 plt.show()

@@ -136,8 +136,8 @@ Matrix4cd Lindbladian (const Matrix4cd &rho, double t) {
     return -I*comm(H(t), rho) + J - .5*anticomm(Gamma, rho);
 }
 
-double observable (const Matrix4cd &rho) {return real(rho(1,0));}
-//double observable (const Matrix4cd &rho) {return imag(rho(1,0));}
+//double observable (const Matrix4cd &rho) {return real(rho(1,0));}
+double observable (const Matrix4cd &rho) {return imag(rho(1,0));}
 
 void get_exact_solution (const Matrix4cd &rho0, string file_index) {
     string out_file = "exact_"+file_index+".txt";
@@ -177,9 +177,9 @@ void MCWF (const Vector4cd &psi0, string file_index) {
                 out_traj << observable(proj(psi[i])) << " ";
 
             double z = rand()/((double)RAND_MAX),
-                   pj_0 = gamma(0)*dt*(L[0]*psi[i]).squaredNorm(),
-                   pj_1 = gamma(1)*dt*(L[1]*psi[i]).squaredNorm(),
-                   pj_2 = gamma(2)*dt*(L[2]*psi[i]).squaredNorm();
+                pj_0 = gamma(0)*dt*(L[0]*psi[i]).squaredNorm(),
+                pj_1 = gamma(1)*dt*(L[1]*psi[i]).squaredNorm(),
+                pj_2 = gamma(2)*dt*(L[2]*psi[i]).squaredNorm();
             if (z < pj_0)
                 psi[i] = L[0]*psi[i];
             else if (z < pj_0 + pj_1)
@@ -187,7 +187,7 @@ void MCWF (const Vector4cd &psi0, string file_index) {
             else if (z < pj_0 + pj_1 + pj_2)
                 psi[i] = L[2]*psi[i];
             else
-                psi[i] -= .5*I*dt*Kt*psi[i];
+                psi[i] -= I*dt*Kt*psi[i];
             psi[i].normalize();
         }
         out << observable(rho) << endl;
@@ -249,8 +249,8 @@ void QSD (const Vector4cd &psi0, string file_index) {
 
 int main () {
     // A string defining whether obs is real or imag part
-    string re_or_im = "re";
-    //string re_or_im = "im";
+    //string re_or_im = "re";
+    string re_or_im = "im";
     get_exact_solution(proj(ketPlus), "p_"+re_or_im);
     get_exact_solution(proj(ketMinus), "m_"+re_or_im);
     get_exact_solution(Q1, "0_"+re_or_im);
