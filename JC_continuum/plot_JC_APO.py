@@ -51,7 +51,7 @@ for i in range(Npoints):
 if print_traj == True:
     for i in range(Ntraj):
         ax[0].plot(t, trajectories_p[i,:], alpha=.1, color='red')
-ax[0].plot(t,exact_p,color='black', label="Exact")
+ax[0].plot(t,exact_p,color='black')
 ax[0].plot(t,avg_obs_p, marker='o', markersize=6, color='red', label="MCWF", markevery=markevery, linewidth=0, fillstyle='none')
 axx.plot(t, gm, label=r'$\gamma_-^x$')
 axx.plot(t, gp, '--', label=r'$\gamma_+^x$')
@@ -106,9 +106,9 @@ for i in range(Npoints):
 if print_traj == True:
     for i in range(Ntraj):
         ax[1].plot(t, trajectories_m[i,:], alpha=.1, color='red')
-ax[1].plot(t,exact_m,color='black', label="Exact")
+ax[1].plot(t,exact_m,color='black')
 ax[1].plot(t,avg_obs_m, marker='o', markersize=6, color='red', label="MCWF", markevery=markevery, linewidth=0, fillstyle='none')
-ax[2].plot(t,exact,color='black', label="Exact")
+ax[2].plot(t,exact,color='black')
 ax[2].plot(t,avg_obs, marker='o', markersize=6, color='red', label="MCWF", markevery=markevery, linewidth=0, fillstyle='none')
 
 # Same with QSD
